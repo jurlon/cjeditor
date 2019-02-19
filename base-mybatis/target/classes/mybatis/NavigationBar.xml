@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jurlon.cjeditor.mybatis.mapper.NavigationBarMapper" >
+  <resultMap id="BaseResultMap" type="navigationBar" >
+      <id column="ID" property="id" jdbcType="INTEGER" />
+      <result column="NAME" property="name" jdbcType="VARCHAR" />
+      <result column="PARENT_ID" property="parentId" jdbcType="INTEGER" />
+      <result column="PRIORITY_LEVEL" property="priorityLevel" jdbcType="INTEGER" />
+      <result column="DISPLAY" property="display" jdbcType="VARCHAR" />
+  </resultMap>
+    <sql id="Base_Column_List" >
+        ID, NAME, PARENT_ID,PRIORITY_LEVEL,DISPLAY
+    </sql>
+
+    <select id="listByModel" resultMap="BaseResultMap" parameterType="navigationBar" >
+        select
+        <include refid="Base_Column_List" />
+        from t_order
+        where 1=1
+        <if test="id != null" >
+            and id = #{id}
+        </if>
+        <if test="parentId != null" >
+            and PARENT_ID = #{parentId}
+        </if>
+        <if test="display != null" >
+            and DISPLAY = #{display}
+        </if>
+    </select>
+    
+</mapper>
