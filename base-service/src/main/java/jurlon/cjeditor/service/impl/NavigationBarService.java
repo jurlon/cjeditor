@@ -1,8 +1,9 @@
 package jurlon.cjeditor.service.impl;
 
+import jurlon.cjeditor.common.service.INavigationBarService;
+import jurlon.cjeditor.common.vo.NavigationBarVo;
 import jurlon.cjeditor.mybatis.mapper.NavigationBarMapper;
 import jurlon.cjeditor.mybatis.model.NavigationBar;
-import jurlon.cjeditor.service.INavigationBarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,17 @@ import java.util.List;
  * @Description
  */
 @Service
-public class NavigationBarService  implements INavigationBarService {
+public class NavigationBarService extends AbstractBaseService implements INavigationBarService {
     @Autowired
     private NavigationBarMapper navigationBarMapper;
+    @Autowired
+    private NavigationBar bar;
     
-    public List<NavigationBar> listBy(){
+    public List<NavigationBarVo> listBy(){
+        System.out.println(bar);
         NavigationBar model = new NavigationBar();
         List<NavigationBar> list = navigationBarMapper.listByModel(model);
-        return list;
+        return modelListToVoList(list,NavigationBarVo.class);
     }
     
 }

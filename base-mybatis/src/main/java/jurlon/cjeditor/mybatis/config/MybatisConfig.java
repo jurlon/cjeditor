@@ -1,6 +1,7 @@
 package jurlon.cjeditor.mybatis.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import org.springframework.core.io.ClassPathResource;
 @Configuration
 @MapperScan(basePackages = "jurlon.cjeditor.mybatis.mapper")//扫描mapper
 public class MybatisConfig {
-    @Bean
+    //@Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         String path = "application-mybatis.yml";

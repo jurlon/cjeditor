@@ -1,9 +1,8 @@
 package jurlon.cjeditor.web.controller;
 
-import jurlon.cjeditor.mybatis.model.NavigationBar;
-import jurlon.cjeditor.service.INavigationBarService;
-import jurlon.cjeditor.service.impl.NavigationBarService;
-import jurlon.cjeditor.web.util.IMoocJSONResult;
+import jurlon.cjeditor.common.service.INavigationBarService;
+import jurlon.cjeditor.common.vo.NavigationBarVo;
+import jurlon.cjeditor.web.util.JSONResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,8 @@ public class NavigationBarController {
     
     @ResponseBody
     @RequestMapping("list")
-    public IMoocJSONResult listBy(){
-        List<NavigationBar> list = navigationBarService.listBy();
-        return IMoocJSONResult.ok(list);
+    public JSONResultUtil listBy(){
+        List<NavigationBarVo> list = navigationBarService.listBy();
+        return JSONResultUtil.success(list);
     }
 }

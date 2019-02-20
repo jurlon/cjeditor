@@ -1,35 +1,27 @@
 spring:
-  rabbitmq:
-    addresses: 192.168.88.126:5672
-    username: guest
-    password: guest
-    virtual-host: /
-    publisher-confirms: true
-    publisher-returns: true
-    template:
-      mandatory: true
   datasource:
     url: jdbc:mysql://localhost:3306/cjeditor?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-  redis:
-    host: 192.168.88.128
-    password:
-    port: 6479
-    jedis:
-      pool:
-        max-active: 1000
-        max-wait: 10s
-        max-idle: 8
-        min-idle: 2
-    timeout: 5s
-server:
-  port: 8001
-  servlet:
-    context-path: /
 mybatis:
-  type-aliases-package: jurlon.cjeditor.mybatis.model
-  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: jurlon.cjeditor.mybatis.model #别名扫描包
+  mapper-locations: classpath:mybatis/*.xml #mybatis xml路径
+druid:
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  filters: stat,wall,logback
+  initialSize: 5
+  maxActive: 300
+  maxPoolPreparedStatementPerConnectionSize: 20
+  maxWait: 60000
+  minEvictableIdleTimeMillis: 300000
+  minIdle: 10
+  poolPreparedStatements: true
+  testOnBorrow: false
+  testOnReturn: false
+  testWhileIdle: true
+  timeBetweenEvictionRunsMillis: 60000
+  useGlobalDataSourceStat: true
+  validationQuery: SELECT 1 FROM DUAL
 

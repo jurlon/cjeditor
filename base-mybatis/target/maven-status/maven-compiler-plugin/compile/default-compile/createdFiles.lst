@@ -1,2 +1,4 @@
 jurlon\cjeditor\mybatis\model\BaseModel.class
+jurlon\cjeditor\mybatis\mapper\NavigationBarMapper.class
 jurlon\cjeditor\mybatis\model\NavigationBar.class
+jurlon\cjeditor\mybatis\config\MybatisConfig.class
