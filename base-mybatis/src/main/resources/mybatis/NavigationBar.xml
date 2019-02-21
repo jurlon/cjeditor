@@ -27,5 +27,20 @@
             and DISPLAY = #{display}
         </if>
     </select>
-    
+
+    <select id="listFirstLevel" resultMap="BaseResultMap" parameterType="navigationBar" >
+        select
+        <include refid="Base_Column_List" />
+        from navigation_bar
+        where PARENT_ID is null 
+        order by PRIORITY_LEVEL asc 
+    </select>
+
+    <select id="listByParentId" resultMap="BaseResultMap" parameterType="navigationBar" >
+        select
+        <include refid="Base_Column_List" />
+        from navigation_bar
+        where PARENT_ID = #{parentId}
+        order by PRIORITY_LEVEL asc
+    </select>
 </mapper>

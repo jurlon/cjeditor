@@ -13,4 +13,8 @@ import java.util.List;
  */
 public interface NavigationBarMapper {
     public List<NavigationBar> listByModel(NavigationBar model);
+    
+    public List<NavigationBar> listFirstLevel();
+    
+    public List<NavigationBar> listByParentId(int parentId);
 }

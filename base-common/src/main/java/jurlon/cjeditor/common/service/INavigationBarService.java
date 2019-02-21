@@ -11,5 +11,5 @@ import java.util.List;
  * @Description
  */
 public interface INavigationBarService {
-    public List<NavigationBarVo> listBy();
+    public List<NavigationBarVo> listAllAble();
 }

@@ -11,6 +11,8 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: jurlon@163.com
@@ -24,27 +26,34 @@ public class WebConfig {
     @Bean
     public PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
-        String path = "application-mybatis.yml";
         YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
-        yaml.setResources(new ClassPathResource(path));//class引入
         //yaml.setResources(new FileSystemResource(path));//File引入
-        //yaml.setResources(new ClassPathResource("application-mybatis.yml"));
-        configurer.setProperties(yaml.getObject());
-        loadClassPathFiles();
+        //yaml.setResources(new ClassPathResource("application-mybatis.yml"));//class引入
+        List<ClassPathResource> classPathResources = loadClassPathFiles();
+        if(classPathResources!=null){
+            yaml.setResources(classPathResources.toArray(new ClassPathResource[classPathResources.size()]));
+            configurer.setProperties(yaml.getObject());
+        }
         return configurer;
     }
-    public void loadClassPathFiles(){
+    private List<ClassPathResource> loadClassPathFiles(){
         try {
             File dir= ResourceUtils.getFile("classpath:");
             if(!dir.isDirectory()){
-                return;
+                return null;
             }
+            List<ClassPathResource> list = new ArrayList<>();
             File[] files = dir.listFiles();
             for(File f : files){
-                log.info(f.getName());
+                if(f.getName().endsWith(".yml")){
+                    log.info(f.getName());
+                    list.add(new ClassPathResource(f.getName()));    
+                }
             }
+            return list;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return null;
         }
     }
 }

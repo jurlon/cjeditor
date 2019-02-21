@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 /**
  * @Author: jurlon@163.com
  * @DateTime: 2019/2/19 16:42
@@ -19,4 +21,5 @@ public class NavigationBar extends BaseModel{
     private Integer parentId;
     private Integer priorityLevel;
     private String display;
+    private List<NavigationBar> childrenList;
 }

@@ -1,11 +1,10 @@
 package jurlon.cjeditor.redis.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @Author: jurlon@163.com
@@ -15,23 +14,6 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 public class RedisConfig {
-    @Autowired
-    PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer;
-    /**
-     * @Author: jurlon@163.com
-     * @Date: 2019/2/20 17:08
-     * @Description: 读取配置文件
-     */
-   // @Bean
-    public PropertySourcesPlaceholderConfigurer properties() {
-        //PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
-        String path = "application-redis.yml";
-        YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
-        yaml.setResources(new ClassPathResource(path));
-        propertySourcesPlaceholderConfigurer.setProperties(yaml.getObject());
-        return propertySourcesPlaceholderConfigurer;
-    }
-    
     /**
      * @Author: jurlon@163.com
      * @Date: 2019/2/20 17:13
@@ -66,4 +48,11 @@ public class RedisConfig {
 
         return template;
     }*/
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+    @Bean
+    public ListOperations listOperations(){
+       return redisTemplate.opsForList();
+    }
 }

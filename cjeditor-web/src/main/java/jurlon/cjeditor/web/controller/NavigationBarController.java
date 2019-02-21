@@ -25,7 +25,7 @@ public class NavigationBarController {
     @ResponseBody
     @RequestMapping("list")
     public JSONResultUtil listBy(){
-        List<NavigationBarVo> list = navigationBarService.listBy();
+        List<NavigationBarVo> list = navigationBarService.listAllAble();
         return JSONResultUtil.success(list);
     }
 }
