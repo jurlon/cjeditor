@@ -1,4 +1,4 @@
-package jurlon.cjeditor.service.impl;
+package jurlon.cjeditor.service.util;
 
 import jurlon.cjeditor.common.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;

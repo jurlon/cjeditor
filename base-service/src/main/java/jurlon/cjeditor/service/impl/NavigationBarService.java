@@ -5,6 +5,8 @@ import jurlon.cjeditor.common.vo.NavigationBarVo;
 import jurlon.cjeditor.mybatis.mapper.NavigationBarMapper;
 import jurlon.cjeditor.mybatis.model.NavigationBar;
 import jurlon.cjeditor.redis.config.RedisHanlder;
+import jurlon.cjeditor.service.util.AbstractBaseService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.List;
  * @FileName: NavigationBarService
  * @Description
  */
+@Slf4j
 @Service
 public class NavigationBarService extends AbstractBaseService implements INavigationBarService {
     @Autowired
@@ -23,17 +26,18 @@ public class NavigationBarService extends AbstractBaseService implements INaviga
     @Autowired
     private RedisHanlder redisHanlder;
     
-    public static final String REDIS_KEY = "NAVIGATION_BAR";
+    public static final String TABLE_NAME = "NAVIGATION_BAR";
     
     public List<NavigationBarVo> listAllAble(){
-        List<NavigationBarVo> voList = redisHanlder.getList(REDIS_KEY);
+        List<NavigationBarVo> voList = redisHanlder.getList(TABLE_NAME);
         if(voList == null || voList.size() == 0){
             List<NavigationBar> list = navigationBarMapper.listFirstLevel();
             for(NavigationBar bar : list){
                 bar.setChildrenList(navigationBarMapper.listByParentId(bar.getId()));
             }
             voList = modelListToVoList(list,NavigationBarVo.class);
-            redisHanlder.setList(REDIS_KEY,voList);
+            redisHanlder.setList(TABLE_NAME,voList);
+            log.info("key={},value={}", TABLE_NAME,voList);
         }
         return voList;
     }

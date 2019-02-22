@@ -32,7 +32,7 @@
         select
         <include refid="Base_Column_List" />
         from navigation_bar
-        where PARENT_ID is null 
+        where PARENT_ID is null and DISPLAY = 'yes'
         order by PRIORITY_LEVEL asc 
     </select>
 
@@ -40,7 +40,7 @@
         select
         <include refid="Base_Column_List" />
         from navigation_bar
-        where PARENT_ID = #{parentId}
-        order by PRIORITY_LEVEL asc
+        where PARENT_ID = #{parentId} and DISPLAY = 'yes'
+        order by PRIORITY_LEVEL asc 
     </select>
 </mapper>

@@ -1,7 +1,6 @@
 package jurlon.cjeditor.web.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +24,7 @@ import java.util.List;
 public class WebConfig {
     @Bean
     public PropertySourcesPlaceholderConfigurer properties() {
+        
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
         //yaml.setResources(new FileSystemResource(path));//File引入
