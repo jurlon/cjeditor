@@ -4,8 +4,6 @@ import jurlon.cjeditor.common.service.INavigationBarService;
 import jurlon.cjeditor.common.vo.NavigationBarVo;
 import jurlon.cjeditor.web.util.JSONResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +17,7 @@ import java.util.List;
  * @Description
  */
 @Controller
-@RequestMapping("")
+@RequestMapping("navigationBar")
 public class NavigationBarController {
     @Autowired
     private INavigationBarService navigationBarService;
@@ -29,13 +27,5 @@ public class NavigationBarController {
     public JSONResultUtil listBy(){
         List<NavigationBarVo> list = navigationBarService.listAllAble();
         return JSONResultUtil.success(list);
-    }
-    @Autowired
-    private RedisTemplate redisTemplate;
-    @ResponseBody
-    @RequestMapping("remove")
-    public JSONResultUtil removeCache(){
-        redisTemplate.delete("NAVIGATION_BAR");
-        return JSONResultUtil.success("ok");
     }
 }

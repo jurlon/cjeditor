@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rich resources</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<div id="app">
+    <img src="./../static/qrcode/qrcode.jpg" alt="" width="200px" style="display: block; margin: auto">
+    <div class="index-list-wrap">
+        <div class="shizhan-course-list clearfix">
+            <div class="shizhan-course-wrap l " v-for="(item , index) in booklist" :key="index">
+                <a href="/class/321.html">
+
+                    <div class="shizhan-course-box">
+
+                        <div v-if="item.tagActive" class="course-stat" :class="item.tagActive">{{item.tagActive|format}}</div>
+                        <!-- 学习进度 -->
+                        <div class="box">
+                            <div class="img-box">
+                                <div class="shizhan-course-gradient"></div>
+                                <img class="shizhan-course-img" :alt="item.name" :src="'../static/images/'+item.id+'.jpg'">
+                                <div class="lecturer-info">
+                                    <img class="shizhan-course-img" :alt="item.author"  :src="'../static/headicon/'+item.id+'.jpg'">
+                                    <span>{{item.author}}</span>
+                                </div>
+                            </div>
+                            <div class="shizhan-intro-box">
+                                <p class="shizan-name" :title="item.name">{{item.name}}</p>
+                                <div class="evaluation-box">
+                                    <div class="shizhan-info">
+                                        <span class="grade">{{item.level}}</span>
+                                        <span><i class="imv2-set-sns"></i>{{item.member}}</span>
+                                        <span class="r">评价：{{item.score}}分</span>
+
+                                    </div>
+                                    <div class="evaluation-desc-box clearfix">
+                                        <i class="trangle"></i>
+                                        <div class="left-box l">
+                                            <p>综合评分</p>
+                                            <p class="big-text">10.00</p>
+                                            <p>11人评价</p>
+                                        </div>
+                                        <div class="right-box l">
+                                            <p>内容实用<span>10.0</span></p>
+                                            <p>通俗易懂<span>10.0</span></p>
+                                            <p>逻辑清晰<span>10.0</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="shizan-desc" :title="item.desc">{{item.desc}}</p>
+                                <div class="shizhan-info-bottom">
+                                    <div class="clearfix">
+
+                                        <div class="course-card-price">￥{{item.price}}</div>
+                                        <div class="course-card-price-count">￥{{item.priceCount}}</div>
+
+                                        <!--<div class="r clearfix">
+                                            <div class="collect clearfix js-course-collect" data-type="0" data-cid="321"><i class="imv2-star j"></i><span>收藏</span></div>
+                                            <span class="line"></span>
+                                            <span class="acart js-course-acart" data-cid="321">加购物车</span>
+                                        </div>-->
+                                    </div>
+
+                                    <div class="bot-discount clearfix">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script src="../static/js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+//                name 书名   tag标签  level 难度级别 member 参与人数   price: 售价   score  评分
+                booklist:[
+                    {
+                        id:1,
+                        name:'Flutter从入门到进阶-实战携程网App',tag:['Java','MySql'],
+                        author:'CrazyCodeBoy',level:'中级',member:486,price:'348.00',priceCount:'14.80',
+                        score:'10.00',desc:'从入门到进阶，系统掌握Flutter开发核心技术',
+                    },
+                    {
+                        id:2,tagActive:'upgrade',
+                        name:'Google面试官亲授- Java面试新手尊享课',tag:['Java','MySql'],
+                        author:'ccmouse',level:'中级',member:1844,price:'299.00',priceCount:'14.80',
+                        score:'9.82',desc:'为面试新手量身定制的Java面试尊享课，解锁“鲤鱼跃龙门”的妙招',
+                    },
+                    {
+                        id:3,
+                        name:'Node.js 从零开发 web server博客项目 前端晋升全栈工程师必备',tag:['Java','MySql'],
+                        author:'ccmouse',level:'中级',member:410,price:'299.00',priceCount:'14.80',
+                        score:'9.94',desc:'从入门到实战，一站式掌握 Node.js+Express',
+                    },
+                    {
+                        id:4,
+                        name:'从基础到实战 手把手带你掌握新版Webpack4.0',tag:['Java','MySql'],
+                        author:'ccmouse',level:'中级',member:803,price:'299.00',priceCount:'14.80',
+                        score:'10.00',desc:'知识点+项目实例+原理讲解 全方位解析Webpack4最新版本',
+                    },
+                    {
+                        id:5,
+                        name:'剑指Java面试-Offer直通车',tag:['Java','MySql'],
+                        author:'ccmouse',level:'中级',member:2407,price:'299.00',priceCount:'14.80',
+                        score:'9.81',desc:'招聘季即将到来，让百度资深面试官来为你的高薪Offer保驾护航',
+                    },
+                ]
+            }
+        },
+        filters:{
+            format(val){
+                var tag;
+                switch (val){
+                    case 'upgrade':
+                        tag = '升级';break;
+                    case 'new':
+                        tag = '新课';break;
+                }
+                return tag
+            }
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>

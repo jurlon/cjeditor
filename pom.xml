@@ -71,11 +71,19 @@
                 <artifactId>lombok</artifactId>
                 <version>1.16.10</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            
+            <!--用fastjson实现redis自定义序列化方式-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>1.2.56</version>
+            </dependency>
+            
+            <!--用kryo实现redis自定义序列化方式-->
+            <dependency>
+                <groupId>com.esotericsoftware.kryo</groupId>
+                <artifactId>kryo</artifactId>
+                <version>2.24.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

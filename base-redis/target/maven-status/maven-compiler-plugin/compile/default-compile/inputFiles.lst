@@ -1,2 +1,5 @@
 F:\workspace_cjeditor\cjeditor\base-redis\src\main\java\jurlon\cjeditor\redis\config\RedisConfig.java
 F:\workspace_cjeditor\cjeditor\base-redis\src\main\java\jurlon\cjeditor\redis\config\RedisHanlder.java
+F:\workspace_cjeditor\cjeditor\base-redis\src\main\java\jurlon\cjeditor\redis\config\FastJsonRedisSerializer.java
+F:\workspace_cjeditor\cjeditor\base-redis\src\main\java\jurlon\cjeditor\redis\config\RedisProperties.java
+F:\workspace_cjeditor\cjeditor\base-redis\src\main\java\jurlon\cjeditor\redis\config\KryoRedisSerializer.java

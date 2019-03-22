@@ -23,7 +23,6 @@ public class ApplicationStartup implements ApplicationRunner {
     
     @Override
     public void run(ApplicationArguments args) throws Exception {
-      log.info("11111111111111111");
         cacheHandler.init();
     }
 }

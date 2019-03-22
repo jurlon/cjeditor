@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class NavigationBarVo extends BaseVo implements Serializable {
+public class NavigationBarVo extends BaseVo {
     private static final long serialVersionUID = 6868395514200223547L;
     private Integer id;
     private String name;

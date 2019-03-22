@@ -1,2 +1,5 @@
+jurlon\cjeditor\redis\config\KryoRedisSerializer.class
 jurlon\cjeditor\redis\config\RedisHanlder.class
+jurlon\cjeditor\redis\config\RedisProperties.class
+jurlon\cjeditor\redis\config\FastJsonRedisSerializer.class
 jurlon\cjeditor\redis\config\RedisConfig.class

@@ -1,4 +1,6 @@
-jurlon\cjeditor\web\controller\NavigationBarController.class
 jurlon\cjeditor\CjeditorApplication.class
+jurlon\cjeditor\web\config\ApplicationStartup.class
+jurlon\cjeditor\web\controller\NavigationBarController.class
+jurlon\cjeditor\web\controller\IndexController.class
 jurlon\cjeditor\web\util\JSONResultUtil.class
 jurlon\cjeditor\web\config\WebConfig.class

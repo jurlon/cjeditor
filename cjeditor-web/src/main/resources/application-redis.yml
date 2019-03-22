@@ -2,7 +2,7 @@ spring:
   redis:
     host: 116.62.238.210
     #host: 192.168.88.128
-    password: 
+    password: 123456asw
     port: 6379
     jedis:
       pool:

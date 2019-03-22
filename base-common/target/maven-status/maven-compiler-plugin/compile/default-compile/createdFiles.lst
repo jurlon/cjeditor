@@ -3,3 +3,4 @@ jurlon\cjeditor\common\vo\NavigationBarVo.class
 jurlon\cjeditor\common\service\INavigationBarService.class
 jurlon\cjeditor\common\vo\BaseVo.class
 jurlon\cjeditor\common\util\DateUtil.class
+jurlon\cjeditor\common\handler\ICacheHandler.class
